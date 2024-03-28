@@ -3,15 +3,16 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Bimmer Racing</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/BimmerRacing.styles.css" asp-append-version="true" />
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark box-shadow mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand text-light" asp-area="" asp-controller="Home" asp-action="Index">BimmerRacing</a>
+                <a class="navbar-brand text-light" asp-area="" asp-controller="Home" asp-action="Index"></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -24,7 +25,28 @@
                         <li class="nav-item">
                             <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
-                    </ul>
+                                        <li class="nav-item dropdown">
+                                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                               Categories
+                                            </a>
+                                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                                <li><a class="dropdown-item" href="#">Performance</a></li>
+                                                <li><a class="dropdown-item" href="#">Mantainance</a></li>
+                                                <li><a class="dropdown-item" href="#">Exterior</a></li>
+                                                <li><a class="dropdown-item" href="#">Interior</a></li>
+                                            </ul>
+                                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">About us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Contact</a>
+                        </li>
+                                    </ul>
+                                    <form class="d-flex">
+                                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                                        <button class="btn btn-outline-" type="submit">Search</button>
+                                    </form>
                 </div>
             </div>
             <partial name="_LoginPartial.cshtml"/>
@@ -36,7 +58,7 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer class="footer text-muted">
         <div class="container">
             &copy; 2024 - BimmerRacing - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
