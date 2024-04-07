@@ -23,6 +23,26 @@ namespace BimmerRacing.Controllers
             return View();
         }
 
+        public IActionResult Performance()
+        {
+            return View();
+        }
+
+        public IActionResult Maintenance()
+        {
+            return View();
+        }
+
+        public IActionResult Interior()
+        {
+            return View();
+        }
+
+        public IActionResult Exterior()
+        {
+            return View();
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
