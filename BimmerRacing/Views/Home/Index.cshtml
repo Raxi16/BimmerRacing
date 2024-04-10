@@ -2,14 +2,86 @@
     ViewData["Title"] = "Home Page";
 }
 
-
 <body>
-
     <div class="text-center text-light">
         <h1 class="display-1 fw-bold">BR</h1>
-</div>
+    </div>
     <div class="test text-light">
         <h1 class="display-3 fw-bold">Build Your Dream</h1>
         <h1 class="display-3 fw-bold">BMW</h1>
     </div>
+
+    <style>
+        .carousel-img {
+            max-height: 400px; /* Set the maximum height for all images */
+            width: auto; /* Allow images to scale proportionally */
+            margin: 0 auto; /* Center the images horizontally */
+        }
+    </style>
+    <!-- Carousel -->
+    <div id="productCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <a href="@Url.Action("Performance", "Home")">
+                    <img src="~/images/performance.png" alt="Performance" class="d-block w-100 h-100" />
+                </a>
+            </div>
+            <div class="carousel-item">
+                <a href="@Url.Action("Maintenance", "Home")">
+                    <img src="~/images/maintenance.png" alt="Maintenance" class="d-block w-100 h-100" />
+                </a>
+            </div>
+            <div class="carousel-item">
+                <a href="@Url.Action("Interior", "Home")">
+                    <img src="~/images/interior.png" alt="Interior" class="d-block w-100 h-100" />
+                </a>
+            </div>
+            <div class="carousel-item">
+                <a href="@Url.Action("Exterior", "Home")">
+                    <img src="~/images/exterior.png" alt="Exterior" class="d-block w-100 h-100" />
+                </a>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#productCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+
+    <!-- Footer Section -->
+    <footer class="footer text-muted mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h3 class="text-light">Our Mission</h3>
+                    <p class="text-light">
+                        Our mission is to provide our customers with the highest quality of carbon fiber automotive parts, accessories and services, while delivering an unparalleled online shopping experience. We strive to empower our customers to achieve the ultimate driving machine by providing superior quality, competitive pricing and exceptional customer service.
+                    </p>
+                </div>
+                <div class="col-md-6">
+                    <h3 class="text-light">Contact Details</h3>
+                    <p class="text-light">
+                        <strong>Working Hours:</strong><br>
+                        Monday-Friday 9am-5pm<br>
+                        Saturday 11am-9pm
+                    </p>
+                    <p class="text-light">
+                        <strong>Phone:</strong> +64 274319797<br>
+                        <strong>Email:</strong> bimmerracing@gmail.com
+                    </p>
+                    <p class="text-light">
+                        <strong>Address:</strong><br>
+                        34A Portage Road, New Lynn 0600 Auckland
+                        <br>
+                        <a href="https://www.google.com/maps/search/?api=1&query=34A+Portage+Road,+New+Lynn,+0600,+Auckland" target="_blank" class="text-light">View on Google Maps</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
 </body>

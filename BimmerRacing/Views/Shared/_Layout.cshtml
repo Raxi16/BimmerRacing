@@ -1,12 +1,18 @@
 ﻿<!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Bimmer Racing</title>
+    <!-- Other meta tags and title -->
+    <!-- Bootstrap CSS -->
+    <!-- Your other CSS files -->
+    <!-- Add this line for FontAwesome -->
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/BimmerRacing.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
 </head>
 <body>
     <header>
@@ -25,6 +31,9 @@
                         <li class="nav-item">
                             <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Contact">Contact</a>
+                        </li>
                                         <li class="nav-item dropdown">
                                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                                Categories
@@ -37,16 +46,19 @@
                                             </ul>
                                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">About us</a>
+                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="About">About Us</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Contact</a>
-                        </li>
-                                    </ul>
+                    </ul>
                                     <form class="d-flex">
-                                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <input class="form-control me-2 text-light" type="search" placeholder="Search" aria-label="Search">
                                         <button class="btn btn-outline-" type="submit">Search</button>
                                     </form>
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <button class="btn btn-outline-light" id="addToCartBtn" onclick="addToCart()" asp-area="" asp-controller="Home" asp-action="Cart">Cart</button>
+                        </li>
+                    </ul>
+
                 </div>
             </div>
             <partial name="_LoginPartial.cshtml"/>
