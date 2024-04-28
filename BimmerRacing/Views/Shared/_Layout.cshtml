@@ -5,10 +5,6 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Bimmer Racing</title>
-    <!-- Other meta tags and title -->
-    <!-- Bootstrap CSS -->
-    <!-- Your other CSS files -->
-    <!-- Add this line for FontAwesome -->
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/BimmerRacing.styles.css" asp-append-version="true" />
@@ -16,6 +12,15 @@
 </head>
 <body>
     <header>
+            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark box-shadow mb-3 text-light">
+            <div class="container-fluid text-light">
+                <div class="row w-100 justify-content-center text-light">
+                    <a class="navbar-brand text-light" asp-area="" asp-controller="Home" asp-action="Index">
+                                <img src="~/images/br logo.png" alt="Bimmer Racing Logo" style="height: 80px;">
+                            </a>
+                        </div>
+                </div>
+            </nav>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark box-shadow mb-3">
             <div class="container-fluid">
                 <a class="navbar-brand text-light" asp-area="" asp-controller="Home" asp-action="Index"></a>
@@ -27,9 +32,6 @@
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
                             <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Contact">Contact</a>
@@ -51,11 +53,13 @@
                     </ul>
                                     <form class="d-flex">
                         <input class="form-control me-2 text-light" type="search" placeholder="Search" aria-label="Search">
-                                        <button class="btn btn-outline-" type="submit">Search</button>
+                                        <button class="btn btn-outline-light" type="submit">Search</button>
                                     </form>
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <button class="btn btn-outline-light" id="addToCartBtn" onclick="addToCart()" asp-area="" asp-controller="Home" asp-action="Cart">Cart</button>
+                    <ul class="navbar-nav flex-grow-1 text-light">
+                        <li class="nav-item text-light">
+                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Cart">
+                                <i class="fas fa-shopping-cart"></i> <span id="cartCount" class="badge bg-secondary">0</span>
+                            </a>
                         </li>
                     </ul>
 
