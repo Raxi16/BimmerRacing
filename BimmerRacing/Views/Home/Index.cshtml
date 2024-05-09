@@ -2,43 +2,32 @@
     ViewData["Title"] = "Home Page";
 }
 
+
 <body>
     <div class="text-center text-light">
-        <h1 class="display-1 fw-bold">BR</h1>
+        <h1 class="display-1 fw-bold">Bimmer Racing</h1>
     </div>
-    <div class="test text-light">
-        <h1 class="display-3 fw-bold">Build Your Dream</h1>
-        <h1 class="display-3 fw-bold">BMW</h1>
-    </div>
-
-    <style>
-        .carousel-img {
-            max-height: 400px; /* Set the maximum height for all images */
-            width: auto; /* Allow images to scale proportionally */
-            margin: 0 auto; /* Center the images horizontally */
-        }
-    </style>
     <!-- Carousel -->
     <div id="productCarousel" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
                 <a href="@Url.Action("Performance", "Home")">
-                    <img src="~/images/performance.png" alt="Performance" class="d-block w-100 h-100" />
+                    <img src="~/images/performance.png" alt="Performance" style="width:1400px;height:700px;">
                 </a>
             </div>
             <div class="carousel-item">
                 <a href="@Url.Action("Maintenance", "Home")">
-                    <img src="~/images/maintenance.png" alt="Maintenance" class="d-block w-100 h-100" />
+                    <img src="~/images/maintenance.png" alt="Maintenance" style="width:1400px;height:700px;">
                 </a>
             </div>
             <div class="carousel-item">
                 <a href="@Url.Action("Interior", "Home")">
-                    <img src="~/images/interior.png" alt="Interior" class="d-block w-100 h-100" />
+                    <img src="~/images/interior.png" alt="Interior" style="width:1400px;height:700px;">
                 </a>
             </div>
             <div class="carousel-item">
                 <a href="@Url.Action("Exterior", "Home")">
-                    <img src="~/images/exterior.png" alt="Exterior" class="d-block w-100 h-100" />
+                    <img src="~/images/exterior.png" alt="Exterior" style="width:1400px;height:700px;">
                 </a>
             </div>
         </div>
@@ -51,7 +40,18 @@
             <span class="visually-hidden">Next</span>
         </button>
     </div>
+    <div class="test text-light">
+        <h1 class="display-3 fw-bold">Build Your Dream</h1>
+        <h1 class="display-3 fw-bold">BMW</h1>
+    </div>
 
+    <style>
+        .carousel-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+    </style>
 
     <!-- Footer Section -->
     <footer class="footer text-muted mt-5">
