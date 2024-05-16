@@ -1,5 +1,5 @@
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 @media (min-width: 768px) {
@@ -19,17 +19,21 @@ html {
 
 body {
     margin-bottom: 60px;
-    background-image: url('../images/bmw-m4-2968729.jpg');
+    background-image: url('../images/bmw m3.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     min-height: 100vh;
 }
 
+body {
+    padding-top: 70px; /* Adjust the value as needed */
+}
 .navbar {
-    padding: 30px;
+    padding: 40px;
 }
 
 .test {
     margin-top: 400px;
 }
+
