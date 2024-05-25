@@ -23,6 +23,6 @@ namespace BimmerRacing.Models
 
         // Navigation properties
         public Product Product { get; set; } = null!; // Product
-        public Customers Customer { get; set; } = null!; // Customer
+        public Customer Customer { get; set; } = null!; // Customer
     }
 }

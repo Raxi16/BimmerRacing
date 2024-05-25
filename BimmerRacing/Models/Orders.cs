@@ -6,7 +6,6 @@ namespace BimmerRacing.Models
 {
     public class Order
     {
-        [Key]
         public int OrderId { get; set; } // Order ID
 
         [ForeignKey("Customer")]
@@ -29,13 +28,9 @@ namespace BimmerRacing.Models
         public int StoreId { get; set; } // Store ID
 
         // Navigation properties
-        public required Customers Customer { get; set; }
+        public required Customer Customer { get; set; }
         public required Staff Staff { get; set; }
         public required Store Store { get; set; }
-    }
-
-    public class Customers
-    {
     }
 }
 
