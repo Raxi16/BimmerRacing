@@ -29,8 +29,7 @@ namespace BimmerRacing.Models
 
         // Navigation properties
         public required Customer Customer { get; set; }
-        public required Staff Staff { get; set; }
-        public required Store Store { get; set; }
+
     }
 }
 
