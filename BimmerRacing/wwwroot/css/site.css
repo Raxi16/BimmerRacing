@@ -1,22 +1,17 @@
+/* General HTML Styles */
 html {
     font-size: 14px;
+    position: relative;
+    min-height: 100%;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-html {
-  position: relative;
-  min-height: 100%;
-}
-
+/* Body Styles */
 body {
     margin-bottom: 60px;
     background-image: url('../images/bmw m3.jpg');
@@ -24,16 +19,24 @@ body {
     background-repeat: no-repeat;
     background-position: center;
     min-height: 100vh;
-}
-
-body {
     padding-top: 70px; /* Adjust the value as needed */
 }
+
+/* Navbar Styles */
 .navbar {
     padding: 40px;
 }
 
+/* Button and Form Control Focus Styles */
+.btn:focus,
+.btn:active:focus,
+.btn-link.nav-link:focus,
+.form-control:focus,
+.form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+/* Additional Classes */
 .test {
     margin-top: 400px;
 }
-
