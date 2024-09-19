@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using BimmerRacing.Areas.Identity.Data;
 using BimmerRacing.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BimmerRacing.Controllers
 {
@@ -42,7 +43,7 @@ namespace BimmerRacing.Controllers
 
             return View(category);
         }
-
+        [Authorize(Roles = "Admin")]
         // GET: Categories/Create
         public IActionResult Create()
         {

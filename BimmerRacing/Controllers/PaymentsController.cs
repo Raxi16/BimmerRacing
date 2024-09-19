@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using BimmerRacing.Areas.Identity.Data;
 using BimmerRacing.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BimmerRacing.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class PaymentsController : Controller
     {
         private readonly BRContextDB _context;
