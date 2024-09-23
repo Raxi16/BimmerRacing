@@ -41,7 +41,7 @@ public class BRContextDB : IdentityDbContext<IdentityUser>
             new IdentityUser
             {
                 Id = "2",
-                UserName = "Shiv",
+                UserName = "Rafi",
                 NormalizedUserName = "Rafi",
                 Email = "ac119820@avcol.school.nz",
                 NormalizedEmail = "AC119820@AVCOL.SCHOOL.NZ",

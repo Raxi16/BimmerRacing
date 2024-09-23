@@ -7,8 +7,9 @@ var connectionString = builder.Configuration.GetConnectionString("Connection") ?
 builder.Services.AddDbContext<BRContextDB>(options => options.UseSqlServer(connectionString));
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
-    .AddRoles<IdentityRole>()
-    .AddEntityFrameworkStores<BRContextDB>();
+     .AddRoles<IdentityRole>()
+     .AddDefaultTokenProviders()
+     .AddEntityFrameworkStores<BRContextDB>();
     
 
 // Add services to the container.
