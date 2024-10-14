@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -8,6 +7,8 @@ using Microsoft.EntityFrameworkCore;
 using BimmerRacing.Areas.Identity.Data;
 using BimmerRacing.Models;
 using Microsoft.AspNetCore.Authorization;
+using PagedList;
+using BimmerRacing.PaginatedList;
 
 namespace BimmerRacing.Controllers
 {
@@ -21,10 +22,51 @@ namespace BimmerRacing.Controllers
         }
 
         // GET: Products
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(
+            string sortOrder,
+            string currentFilter,
+            string searchString, 
+            int? pageNumber)
         {
-            var bRContextDB = _context.Product.Include(p => p.Category);
-            return View(await bRContextDB.ToListAsync());
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.PriceSortParm = sortOrder == "Price" ? "price_desc" : "Price";
+
+            if (searchString != null)
+            {
+                pageNumber = 1; // Reset to page 1 if a new search is performed
+            }
+            else
+            {
+                searchString = currentFilter; // Keep the current filter
+            }
+            // Filtering
+            ViewData["CurrentFilter"] = searchString;
+
+            var products = from s in _context.Product
+                           select s;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                products = products.Where(s => s.ProductName.Contains(searchString));
+            }
+            // Sorting
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    products = products.OrderByDescending(p => p.ProductName);
+                    break;
+                case "Price":
+                    products = products.OrderBy(p => p.ListPrice);
+                    break;
+                case "price_desc":
+                    products = products.OrderByDescending(p => p.ListPrice);
+                    break;
+                default:
+                    products = products.OrderBy(p => p.ProductName);
+                    break;
+            }
+            int pageSize = 3;
+            return View(await PaginatedList<Product>.CreateAsync(products.AsNoTracking(), pageNumber ?? 1, pageSize));
         }
 
         // GET: Products/Details/5
@@ -45,6 +87,7 @@ namespace BimmerRacing.Controllers
 
             return View(product);
         }
+
         [Authorize(Roles = "Admin")]
         // GET: Products/Create
         public IActionResult Create()
@@ -54,8 +97,6 @@ namespace BimmerRacing.Controllers
         }
 
         // POST: Products/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("ProductId,ProductName,CategoryId,ListPrice,Quantity")] Product product)
@@ -88,8 +129,6 @@ namespace BimmerRacing.Controllers
         }
 
         // POST: Products/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("ProductId,ProductName,CategoryId,ListPrice,Quantity")] Product product)
@@ -152,7 +191,6 @@ namespace BimmerRacing.Controllers
             {
                 _context.Product.Remove(product);
             }
-
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }

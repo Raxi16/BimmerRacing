@@ -1,3 +1,4 @@
+using BimmerRacing.Areas.Identity.Data;
 using BimmerRacing.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
@@ -7,10 +8,12 @@ namespace BimmerRacing.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly BRContextDB _context;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, BRContextDB context)
         {
             _logger = logger;
+            _context = context;
         }
 
         public IActionResult Index()
