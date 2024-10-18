@@ -6,7 +6,7 @@ var connectionString = builder.Configuration.GetConnectionString("Connection") ?
 
 builder.Services.AddDbContext<BRContextDB>(options => options.UseSqlServer(connectionString));
 
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
+builder.Services.AddDefaultIdentity < ApplicationUser > (options => options.SignIn.RequireConfirmedAccount = false)
      .AddRoles<IdentityRole>()
      .AddDefaultTokenProviders()
      .AddEntityFrameworkStores<BRContextDB>();
@@ -43,7 +43,7 @@ app.Run();
 using (var scope = app.Services.CreateScope())
 {
     var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
-    var roles = new[] { "Admin", "Manager", "User" };
+    var roles = new[] { "Admin", "Staff", "User" };
 
     foreach (var role in roles)
     {

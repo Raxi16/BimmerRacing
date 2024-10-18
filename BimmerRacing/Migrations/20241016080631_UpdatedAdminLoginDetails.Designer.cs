@@ -4,6 +4,7 @@ using BimmerRacing.Areas.Identity.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BimmerRacing.Migrations
 {
     [DbContext(typeof(BRContextDB))]
-    partial class BRContextDBModelSnapshot : ModelSnapshot
+    [Migration("20241016080631_UpdatedAdminLoginDetails")]
+    partial class UpdatedAdminLoginDetails
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -101,7 +104,7 @@ namespace BimmerRacing.Migrations
                         {
                             Id = "1",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "82db669d-e4b8-41b9-855d-69e2249b1d5e",
+                            ConcurrencyStamp = "6b37955b-7dcd-43cc-916b-0c05df942373",
                             Email = "admin@bimmerracing.com",
                             EmailConfirmed = true,
                             FirstName = "Admin",
@@ -109,9 +112,9 @@ namespace BimmerRacing.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@BIMMERRACING.COM",
                             NormalizedUserName = "ADMIN@BIMMERRACING.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEIoaYxpBQBd3aFaPGKqVnKiWLEtwglLSyrKyfOYwPu2WHFFCS+91f1Az+qrzFKxvLg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEK1lirYBiSC0BxwXU3kzdegCEa6hrJDQtg1r/3IPKZ2AdYIZ7UCHkec9xjfxk+AUhw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "e7d6db26-a25f-4330-a18e-776bec75c929",
+                            SecurityStamp = "3f649939-5d5f-4319-a5f5-5d4b8affcb38",
                             TwoFactorEnabled = false,
                             UserName = "admin@bimmerracing.com"
                         });
@@ -289,10 +292,6 @@ namespace BimmerRacing.Migrations
 
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
-
-                    b.Property<string>("ImageName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(100)");
 
                     b.Property<decimal>("ListPrice")
                         .HasColumnType("decimal(18,2)");

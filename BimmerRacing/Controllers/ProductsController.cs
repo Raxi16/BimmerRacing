@@ -15,10 +15,12 @@ namespace BimmerRacing.Controllers
     public class ProductsController : Controller
     {
         private readonly BRContextDB _context;
+        private readonly IWebHostEnvironment _hostEnvironment;
 
-        public ProductsController(BRContextDB context)
+        public ProductsController(BRContextDB context, IWebHostEnvironment hostEnvironment)
         {
             _context = context;
+            this._hostEnvironment = hostEnvironment;
         }
 
         // GET: Products
@@ -65,6 +67,7 @@ namespace BimmerRacing.Controllers
                     products = products.OrderBy(p => p.ProductName);
                     break;
             }
+            #pragma warning restore IDE0066 // Convert switch statement to expression
             int pageSize = 3;
             return View(await PaginatedList<Product>.CreateAsync(products.AsNoTracking(), pageNumber ?? 1, pageSize));
         }
@@ -99,16 +102,27 @@ namespace BimmerRacing.Controllers
         // POST: Products/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ProductId,ProductName,CategoryId,ListPrice,Quantity")] Product product)
+        public async Task<IActionResult> Create([Bind("ProductId,ProductName,ImageName,ProductImage,CategoryId,ListPrice,Quantity")] Product products)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                _context.Add(product);
+                //Save Image to wwwroot/images
+                string wwwRootPath = _hostEnvironment.WebRootPath;
+                string fileName = Path.GetFileNameWithoutExtension(products.ProductImage.FileName);
+                string extension = Path.GetExtension(products.ProductImage.FileName);
+                products.ImageName = fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+                string path = Path.Combine(wwwRootPath + "/images/", fileName);
+                using (var fileStream = new FileStream(path, FileMode.Create))
+                {
+                    await products.ProductImage.CopyToAsync(fileStream);
+                }
+                //Insert Record
+                _context.Add(products);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CategoryId"] = new SelectList(_context.Category, "CategoryId", "CategoryName", product.CategoryId);
-            return View(product);
+            ViewData["CategoryId"] = new SelectList(_context.Category, "CategoryId", "CategoryName", products.CategoryId);
+            return View(products);
         }
 
         // GET: Products/Edit/5

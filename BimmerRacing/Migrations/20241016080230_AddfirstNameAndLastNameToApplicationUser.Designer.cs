@@ -4,6 +4,7 @@ using BimmerRacing.Areas.Identity.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BimmerRacing.Migrations
 {
     [DbContext(typeof(BRContextDB))]
-    partial class BRContextDBModelSnapshot : ModelSnapshot
+    [Migration("20241016080230_AddfirstNameAndLastNameToApplicationUser")]
+    partial class AddfirstNameAndLastNameToApplicationUser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -101,19 +104,19 @@ namespace BimmerRacing.Migrations
                         {
                             Id = "1",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "82db669d-e4b8-41b9-855d-69e2249b1d5e",
-                            Email = "admin@bimmerracing.com",
+                            ConcurrencyStamp = "12a87da2-46d0-4f90-8386-2d135e313856",
+                            Email = "admin@auroraauto.com",
                             EmailConfirmed = true,
                             FirstName = "Admin",
                             LastName = "Rafi",
                             LockoutEnabled = false,
-                            NormalizedEmail = "ADMIN@BIMMERRACING.COM",
-                            NormalizedUserName = "ADMIN@BIMMERRACING.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEIoaYxpBQBd3aFaPGKqVnKiWLEtwglLSyrKyfOYwPu2WHFFCS+91f1Az+qrzFKxvLg==",
+                            NormalizedEmail = "ADMIN@AURORAAUTO.COM",
+                            NormalizedUserName = "ADMIN@AURORAAUTO.COM",
+                            PasswordHash = "AQAAAAIAAYagAAAAEMjxAJ5oE/H/qy7DEshaLttmN6Kl6euwZ2vrsB9+i8g0GDP0F5UcyjtFoJb+3DbIQw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "e7d6db26-a25f-4330-a18e-776bec75c929",
+                            SecurityStamp = "55fb6774-13e7-42a1-99ef-7cf41e1acee7",
                             TwoFactorEnabled = false,
-                            UserName = "admin@bimmerracing.com"
+                            UserName = "admin@auroraauto.com"
                         });
                 });
 
@@ -289,10 +292,6 @@ namespace BimmerRacing.Migrations
 
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
-
-                    b.Property<string>("ImageName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(100)");
 
                     b.Property<decimal>("ListPrice")
                         .HasColumnType("decimal(18,2)");

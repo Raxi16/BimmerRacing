@@ -1,8 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Identity;
+using System.ComponentModel.DataAnnotations;
 
 namespace BimmerRacing.Areas.Identity.Data
 {
-    public class ApplicationUser
+    public class ApplicationUser : IdentityUser
     {
         [Required(ErrorMessage = "First name is required.")]
         [StringLength(50, ErrorMessage = "First name cannot be longer than 50 characters.")]

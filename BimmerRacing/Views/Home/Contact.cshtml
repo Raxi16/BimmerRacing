@@ -1,22 +1,25 @@
 ﻿@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
-@{
-    ViewData["Title"] = "Contact Us";
-}
-            <!-- Create your contact form here -->
-            <form>
-                <div class="mb-3 text-dark">
-                    <label for="fullName" class="form-label">Full Name</label>
-                    <input type="text" class="form-control" id="fullName" placeholder="Enter your full name">
-                </div>
-                <div class="mb-3 text-light">
-                    <label for="email" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="email" placeholder="Enter your email">
-                </div>
-                <div class="mb-3 text-light">
-                    <label for="message" class="form-label">Message</label>
-                    <textarea class="form-control" id="message" rows="5" placeholder="Enter your message"></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
+
+<div style="margin-top: 80px;">
+    @{
+        ViewData["Title"] = "Contact Us";
+    }
+    <!-- contact form here -->
+    <form>
+        <div class="mb-3 text-light">
+            <label for="fullName" class="form-label">Full Name</label>
+            <input type="text" class="form-control" id="fullName" placeholder="Enter your full name">
+        </div>
+        <div class="mb-3 text-light">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" placeholder="Enter your email">
+        </div>
+        <div class="mb-3 text-light">
+            <label for="message" class="form-label">Message</label>
+            <textarea class="form-control" id="message" rows="5" placeholder="Enter your message"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
