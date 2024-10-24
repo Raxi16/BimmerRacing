@@ -1,13 +1,14 @@
 ﻿using System;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using BimmerRacing.Areas.Identity.Data;
 using BimmerRacing.Models;
-using Microsoft.AspNetCore.Authorization;
-using PagedList;
 using BimmerRacing.PaginatedList;
 
 namespace BimmerRacing.Controllers
@@ -20,19 +21,15 @@ namespace BimmerRacing.Controllers
         public ProductsController(BRContextDB context, IWebHostEnvironment hostEnvironment)
         {
             _context = context;
-            this._hostEnvironment = hostEnvironment;
+            _hostEnvironment = hostEnvironment;
         }
 
         // GET: Products
-        public async Task<IActionResult> Index(
-            string sortOrder,
-            string currentFilter,
-            string searchString, 
-            int? pageNumber)
+        public async Task<IActionResult> Index(string sortOrder, string currentFilter, string searchString, int? pageNumber)
         {
             ViewBag.CurrentSort = sortOrder;
-            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
-            ViewBag.PriceSortParm = sortOrder == "Price" ? "price_desc" : "Price";
+            ViewBag.NameSortParm = string.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.PriceSortParm = sortOrder == "ListPrice" ? "price_desc" : "ListPrice";
 
             if (searchString != null)
             {
@@ -42,22 +39,23 @@ namespace BimmerRacing.Controllers
             {
                 searchString = currentFilter; // Keep the current filter
             }
-            // Filtering
+
             ViewData["CurrentFilter"] = searchString;
 
-            var products = from s in _context.Product
-                           select s;
-            if (!String.IsNullOrEmpty(searchString))
+            var products = from s in _context.Product select s;
+
+            if (!string.IsNullOrEmpty(searchString))
             {
                 products = products.Where(s => s.ProductName.Contains(searchString));
             }
+
             // Sorting
             switch (sortOrder)
             {
                 case "name_desc":
                     products = products.OrderByDescending(p => p.ProductName);
                     break;
-                case "Price":
+                case "ListPrice":
                     products = products.OrderBy(p => p.ListPrice);
                     break;
                 case "price_desc":
@@ -67,7 +65,7 @@ namespace BimmerRacing.Controllers
                     products = products.OrderBy(p => p.ProductName);
                     break;
             }
-            #pragma warning restore IDE0066 // Convert switch statement to expression
+
             int pageSize = 3;
             return View(await PaginatedList<Product>.CreateAsync(products.AsNoTracking(), pageNumber ?? 1, pageSize));
         }
@@ -83,6 +81,7 @@ namespace BimmerRacing.Controllers
             var product = await _context.Product
                 .Include(p => p.Category)
                 .FirstOrDefaultAsync(m => m.ProductId == id);
+
             if (product == null)
             {
                 return NotFound();
@@ -104,23 +103,31 @@ namespace BimmerRacing.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("ProductId,ProductName,ImageName,ProductImage,CategoryId,ListPrice,Quantity")] Product products)
         {
-            if (!ModelState.IsValid)
+            if (products.ProductImage != null && products.ProductImage.Length > 0)
             {
-                //Save Image to wwwroot/images
+                // Save Image to wwwroot/images
                 string wwwRootPath = _hostEnvironment.WebRootPath;
                 string fileName = Path.GetFileNameWithoutExtension(products.ProductImage.FileName);
                 string extension = Path.GetExtension(products.ProductImage.FileName);
-                products.ImageName = fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
-                string path = Path.Combine(wwwRootPath + "/images/", fileName);
+                products.ImageName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+                string path = Path.Combine(wwwRootPath, "images", products.ImageName);
+
+                // Save the file
                 using (var fileStream = new FileStream(path, FileMode.Create))
                 {
                     await products.ProductImage.CopyToAsync(fileStream);
                 }
-                //Insert Record
+
+                // Insert Record
                 _context.Add(products);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            else
+            {
+                ModelState.AddModelError("ProductImage", "Please upload a valid image.");
+            }
+
             ViewData["CategoryId"] = new SelectList(_context.Category, "CategoryId", "CategoryName", products.CategoryId);
             return View(products);
         }
@@ -138,6 +145,7 @@ namespace BimmerRacing.Controllers
             {
                 return NotFound();
             }
+
             ViewData["CategoryId"] = new SelectList(_context.Category, "CategoryId", "CategoryName", product.CategoryId);
             return View(product);
         }
@@ -145,7 +153,7 @@ namespace BimmerRacing.Controllers
         // POST: Products/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ProductId,ProductName,CategoryId,ListPrice,Quantity")] Product product)
+        public async Task<IActionResult> Edit(int id, [Bind("ProductId,ProductName,ImageName,ProductImage,CategoryId,ListPrice,Quantity")] Product product)
         {
             if (id != product.ProductId)
             {
@@ -156,6 +164,7 @@ namespace BimmerRacing.Controllers
             {
                 try
                 {
+                    // Update only the necessary fields, handle image upload if needed
                     _context.Update(product);
                     await _context.SaveChangesAsync();
                 }
@@ -172,6 +181,7 @@ namespace BimmerRacing.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+
             ViewData["CategoryId"] = new SelectList(_context.Category, "CategoryId", "CategoryName", product.CategoryId);
             return View(product);
         }
@@ -204,8 +214,8 @@ namespace BimmerRacing.Controllers
             if (product != null)
             {
                 _context.Product.Remove(product);
+                await _context.SaveChangesAsync();
             }
-            await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 

@@ -50,13 +50,11 @@ namespace BimmerRacing.Controllers
         // GET: Payments/Create
         public IActionResult Create()
         {
-            ViewData["CustomerId"] = new SelectList(_context.Customer, "CustomerID", "City");
+            ViewData["CustomerId"] = new SelectList(_context.Customer, "CustomerID", "FirstName"); // Updated to display FirstName
             return View();
         }
 
         // POST: Payments/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("PaymentId,CustomerId,PayAmount,PayMethod,PayDate")] Payment payment)
@@ -67,7 +65,7 @@ namespace BimmerRacing.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CustomerId"] = new SelectList(_context.Customer, "CustomerID", "City", payment.CustomerId);
+            ViewData["CustomerId"] = new SelectList(_context.Customer, "CustomerID", "FirstName", payment.CustomerId); // Updated to display FirstName
             return View(payment);
         }
 
@@ -84,13 +82,11 @@ namespace BimmerRacing.Controllers
             {
                 return NotFound();
             }
-            ViewData["CustomerId"] = new SelectList(_context.Customer, "CustomerID", "City", payment.CustomerId);
+            ViewData["CustomerId"] = new SelectList(_context.Customer, "CustomerID", "FirstName", payment.CustomerId); // Updated to display FirstName
             return View(payment);
         }
 
         // POST: Payments/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("PaymentId,CustomerId,PayAmount,PayMethod,PayDate")] Payment payment)
@@ -120,7 +116,7 @@ namespace BimmerRacing.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CustomerId"] = new SelectList(_context.Customer, "CustomerID", "City", payment.CustomerId);
+            ViewData["CustomerId"] = new SelectList(_context.Customer, "CustomerID", "FirstName", payment.CustomerId); // Updated to display FirstName
             return View(payment);
         }
 

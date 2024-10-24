@@ -24,9 +24,6 @@ namespace BimmerRacing.Models
         [ForeignKey("Staff")]
         public int StaffId { get; set; } // Staff ID
 
-        [ForeignKey("Store")]
-        public int StoreId { get; set; } // Store ID
-
         // Navigation properties
         public required Customer Customer { get; set; }
 

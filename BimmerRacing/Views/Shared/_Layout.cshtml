@@ -11,59 +11,59 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
 
     <style>
-        body {
-            padding-top: 70px; /* Match this value to the height of the fixed navbar */
-            margin-bottom: 60px; /* Space for footer */
-            background-image: url('../images/bmw m3.jpg');
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: center;
+body {
+    padding-top: 70px; /* Match this value to the height of the fixed navbar */
+    margin-bottom: 60px; /* Space for footer */
+    background-image: url('../images/bmw m3.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.navbar, .footer {
+    background-color: rgba(0, 0, 0, 0.7); /* Darker transparent background */
+    transition: background-color 0.5s ease;
+}
+
+    .navbar.scrolled, .footer.scrolled {
+        background-color: rgba(0, 0, 0, 0.9); /* Less transparent when scrolled */
+    }
+
+    .navbar .nav-link, .footer .text-light {
+        color: #f8f9fa; /* Light text color by default */
+    }
+
+    .navbar.scrolled .nav-link, .footer.scrolled .text-light {
+        color: #e9ecef; /* Slightly lighter text color when scrolled */
+    }
+
+.footer {
+    padding: 20px 0;
+}
+
+    .footer .container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .footer .social-icons a {
+        color: #f8f9fa;
+        margin: 0 10px;
+        font-size: 1.5rem;
+    }
+
+        .footer .social-icons a:hover {
+            color: #007bff;
         }
 
-        .navbar, .footer {
-            background-color: rgba(0, 0, 0, 0.7); /* Darker transparent background */
-            transition: background-color 0.5s ease;
+    .footer .text-light a {
+        color: #f8f9fa;
+    }
+
+        .footer .text-light a:hover {
+            color: #007bff;
         }
-
-            .navbar.scrolled, .footer.scrolled {
-                background-color: rgba(0, 0, 0, 0.9); /* Less transparent when scrolled */
-            }
-
-            .navbar .nav-link, .footer .text-light {
-                color: #f8f9fa; /* Light text color by default */
-            }
-
-            .navbar.scrolled .nav-link, .footer.scrolled .text-light {
-                color: #e9ecef; /* Slightly lighter text color when scrolled */
-            }
-
-        .footer {
-            padding: 20px 0;
-        }
-
-            .footer .container {
-                max-width: 1200px;
-                margin: 0 auto;
-            }
-
-            .footer .social-icons a {
-                color: #f8f9fa;
-                margin: 0 10px;
-                font-size: 1.5rem;
-            }
-
-                .footer .social-icons a:hover {
-                    color: #007bff;
-                }
-
-            .footer .text-light a {
-                color: #f8f9fa;
-            }
-
-                .footer .text-light a:hover {
-                    color: #007bff;
-                }
-    </style>
+</style>
 </head>
 <body>
     <!-- Navbar -->
@@ -97,41 +97,33 @@
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-controller="Home" asp-action="About">About Us</a>
                         </li>
-                        @if (User.IsInRole("Admin"))
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link" asp-area="" asp-controller="Products" asp-action="Index">Products</a>
+        @if (User.IsInRole("Admin"))
+        {
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-area="" asp-controller="Products" asp-action="Index">Products</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-area="" asp-controller="Customers" asp-action="Index">Customers</a>
+                                </li>
+                                <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="Payments" asp-action="Index">Payments</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" asp-area="" asp-controller="Customers" asp-action="Index">Customers</a>
-                            </li>
-                        }
+                                                                <li class="nav-item">
+                                    <a class="nav-link" asp-area="" asp-controller="Orders" asp-action="Index">Orders</a>
+                                </li>
+        }
                     </ul>
-
-                    <!-- Search form -->
-                    <form class="d-flex">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-light" type="submit">Search</button>
-                    </form>
 
                     <!-- Cart and Login/Register icons -->
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Carts" asp-action="Index">
-                                <i class="fas fa-shopping-cart"></i> <span id="cartCount" class="badge bg-secondary">0</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/Identity/Account/Login">
-                                <i class="fas fa-user"></i> Login
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/Identity/Account/Register">
-                                <i class="fas fa-user-plus"></i> Register
-                            </a>
-                        </li>
-                    </ul>
+<!-- Cart and User Authentication -->
+<ul class="navbar-nav ms-auto">
+    <li class="nav-item">
+        <a class="nav-link" asp-area="" asp-controller="Carts" asp-action="Index">
+            <i class="fas fa-shopping-cart"></i> <span id="cartCount" class="badge bg-secondary">0</span>
+        </a>
+    </li>
+    @await Html.PartialAsync("_LoginPartial")
+</ul>
                 </div>
             </div>
         </nav>
@@ -140,7 +132,7 @@
     <!-- Main Content -->
     <div class="container">
         <main role="main" class="pb-3">
-            @RenderBody()
+        @RenderBody()
         </main>
     </div>
 
@@ -195,23 +187,22 @@
             </div>
         </div>
     </footer>
+<!-- Scripts -->
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+@await RenderSectionAsync("Scripts", required: false)
 
-    <!-- Scripts -->
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
-
-    <script>
-        $(window).scroll(function () {
-            if ($(this).scrollTop() > 50) {
-                $('.navbar').addClass('scrolled');
-                $('.footer').addClass('scrolled');
-            } else {
-                $('.navbar').removeClass('scrolled');
-                $('.footer').removeClass('scrolled');
-            }
-        });
-    </script>
+<script>
+    $(window).scroll(function () {
+        if ($(this).scrollTop() > 50) {
+            $('.navbar').addClass('scrolled');
+            $('.footer').addClass('scrolled');
+        } else {
+            $('.navbar').removeClass('scrolled');
+            $('.footer').removeClass('scrolled');
+        }
+    });
+</script>
 </body>
 </html>

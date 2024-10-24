@@ -10,7 +10,7 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create">
+        <form asp-action="Create" enctype="multipart/form-data"> <!-- Added enctype here -->
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="ProductName" class="control-label"></label>
@@ -19,13 +19,12 @@
             </div>
             <div class="form-group">
                 <label asp-for="ProductImage" class="control-label"></label>
-
-                <input asp-for="ProductImage" class="form-control" accept="image/*" />
+                <input asp-for="ProductImage" class="form-control" accept="image/*" type="file" /> <!-- Set type to file -->
                 <span asp-validation-for="ProductImage" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="CategoryId" class="control-label"></label>
-                <select asp-for="CategoryId" class ="form-control" asp-items="ViewBag.CategoryId"></select>
+                <select asp-for="CategoryId" class="form-control" asp-items="ViewBag.CategoryId"></select>
             </div>
             <div class="form-group">
                 <label asp-for="ListPrice" class="control-label"></label>

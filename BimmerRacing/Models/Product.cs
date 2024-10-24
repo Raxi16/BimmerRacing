@@ -8,7 +8,7 @@ namespace BimmerRacing.Models
     {
         public int ProductId { get; set; } // Product ID
 
-        [Required]
+        [Required(ErrorMessage = "Product name is required.")]
         [StringLength(100)]
         public required string ProductName { get; set; } // Product Name
 
@@ -17,7 +17,7 @@ namespace BimmerRacing.Models
         public string ImageName { get; set; } // Name for image file
 
         [DisplayName("Product Image")]
-        [Required]
+        [Required(ErrorMessage = "The Product Image field is required.")]
         [NotMapped]
         public IFormFile ProductImage { get; set; } // Creates an Upload Image field for Product Images
 

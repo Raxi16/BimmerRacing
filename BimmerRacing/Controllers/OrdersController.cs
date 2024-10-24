@@ -50,7 +50,7 @@ namespace BimmerRacing.Controllers
         // GET: Orders/Create
         public IActionResult Create()
         {
-            ViewData["CustomerId"] = new SelectList(_context.Customer, "CustomerID", "City");
+            ViewData["CustomerId"] = new SelectList(_context.Customer, "CustomerID", "FirstName");
             return View();
         }
 
@@ -59,7 +59,7 @@ namespace BimmerRacing.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("OrderId,CustomerId,OrderStatus,RequiredDate,ShippedDate,StaffId,StoreId")] Order order)
+        public async Task<IActionResult> Create([Bind("OrderId,CustomerId,OrderStatus,RequiredDate,ShippedDate,StaffId")] Order order)
         {
             if (ModelState.IsValid)
             {
@@ -67,7 +67,7 @@ namespace BimmerRacing.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CustomerId"] = new SelectList(_context.Customer, "CustomerID", "City", order.CustomerId);
+            ViewData["CustomerId"] = new SelectList(_context.Customer, "CustomerID", "FirstName", order.CustomerId);
             return View(order);
         }
 
@@ -84,7 +84,7 @@ namespace BimmerRacing.Controllers
             {
                 return NotFound();
             }
-            ViewData["CustomerId"] = new SelectList(_context.Customer, "CustomerID", "City", order.CustomerId);
+            ViewData["CustomerId"] = new SelectList(_context.Customer, "CustomerID", "FirstName", order.CustomerId);
             return View(order);
         }
 
@@ -93,7 +93,7 @@ namespace BimmerRacing.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("OrderId,CustomerId,OrderStatus,RequiredDate,ShippedDate,StaffId,StoreId")] Order order)
+        public async Task<IActionResult> Edit(int id, [Bind("OrderId,CustomerId,OrderStatus,RequiredDate,ShippedDate,StaffId")] Order order)
         {
             if (id != order.OrderId)
             {
@@ -120,7 +120,7 @@ namespace BimmerRacing.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CustomerId"] = new SelectList(_context.Customer, "CustomerID", "City", order.CustomerId);
+            ViewData["CustomerId"] = new SelectList(_context.Customer, "CustomerID", "FirstName", order.CustomerId);
             return View(order);
         }
 
