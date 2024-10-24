@@ -3,7 +3,9 @@
 @{
     ViewData["Title"] = "Details";
 }
-
+<div class="container mt-5 p-4" style="background-color: rgba(255, 255, 255, 0.5); border-radius: 8px; color: black;">
+    <div class="row">
+        <div class="col-md-12 text-center">
 <h1>Details</h1>
 
 <div>
@@ -46,6 +48,10 @@
     </dl>
 </div>
 <div>
+            </div>
+        </div>
+    </div>
+
     <a asp-action="Edit" asp-route-id="@Model?.ProductId">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>

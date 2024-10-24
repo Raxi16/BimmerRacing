@@ -21,9 +21,6 @@ namespace BimmerRacing.Models
         [DataType(DataType.Date)]
         public DateTime ShippedDate { get; set; } // Shipped Date (nullable)
 
-        [ForeignKey("Staff")]
-        public int StaffId { get; set; } // Staff ID
-
         // Navigation properties
         public required Customer Customer { get; set; }
 

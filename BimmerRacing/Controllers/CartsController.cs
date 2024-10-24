@@ -50,7 +50,7 @@ namespace BimmerRacing.Controllers
         // GET: Carts/Create
         public IActionResult Create()
         {
-            ViewData["CustomerId"] = new SelectList(_context.Set<Customer>(), "CustomerID", "City");
+            ViewData["CustomerId"] = new SelectList(_context.Set<Customer>(), "CustomerID", "FirstName");
             ViewData["ProductId"] = new SelectList(_context.Set<Product>(), "ProductId", "ProductName");
             return View();
         }
@@ -68,7 +68,7 @@ namespace BimmerRacing.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CustomerId"] = new SelectList(_context.Set<Customer>(), "CustomerID", "City", cart.CustomerId);
+            ViewData["CustomerId"] = new SelectList(_context.Set<Customer>(), "CustomerID", "FirstName", cart.CustomerId);
             ViewData["ProductId"] = new SelectList(_context.Set<Product>(), "ProductId", "ProductName", cart.ProductId);
             return View(cart);
         }
@@ -86,7 +86,7 @@ namespace BimmerRacing.Controllers
             {
                 return NotFound();
             }
-            ViewData["CustomerId"] = new SelectList(_context.Set<Customer>(), "CustomerID", "City", cart.CustomerId);
+            ViewData["CustomerId"] = new SelectList(_context.Set<Customer>(), "CustomerID", "FirstName", cart.CustomerId);
             ViewData["ProductId"] = new SelectList(_context.Set<Product>(), "ProductId", "ProductName", cart.ProductId);
             return View(cart);
         }
@@ -123,7 +123,7 @@ namespace BimmerRacing.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CustomerId"] = new SelectList(_context.Set<Customer>(), "CustomerID", "City", cart.CustomerId);
+            ViewData["CustomerId"] = new SelectList(_context.Set<Customer>(), "CustomerID", "FirstName", cart.CustomerId);
             ViewData["ProductId"] = new SelectList(_context.Set<Product>(), "ProductId", "ProductName", cart.ProductId);
             return View(cart);
         }

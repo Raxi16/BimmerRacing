@@ -8,9 +8,13 @@
 @{
     ViewData["Title"] = "Products";
 }
+    <div class="container mt-5 p-4" style="background-color: rgba(255, 255, 255, 0.5); border-radius: 8px; color: black;">
+        <div class="row">
+            <div class="col-md-12 text-center">
+    <h1>Products</h1>
 
 <p>
-    <a asp-action="Create" class="text-light">Create New</a>
+                    <a asp-action="Create">Create New</a>
 </p>
 
 <form asp-action="Index" method="get">
@@ -18,21 +22,21 @@
         <p>
             <label>Find by name: <input type="text" name="SearchString" value="@ViewData["CurrentFilter"]" /></label>
             <input type="submit" value="Search" class="btn btn-default" /> |
-            <a asp-action="Index" class="text-light">Back to Full List</a>
+            <a asp-action="Index" class="text-dark">Back to Full List</a>
         </p>
     </div>
 </form>
 
-<table class="table text-light">
+<table class="table text-dark">
     <thead>
         <tr>
             <th>
-                <a asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]" class="text-light">Product Name</a>
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]" class="text-dark">Product Name</a>
             </th>
             <th>
-                <a asp-action="Index" asp-route-sortOrder="@ViewData["PriceSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]" class="text-light">List Price</a>
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["PriceSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]" class="text-dark">List Price</a>
             </th>
-            <th class="text-light">
+            <th class="text-dark">
                 Category
             </th>
             <th></th>
@@ -52,14 +56,18 @@
                     @Html.DisplayFor(modelItem => item.Category)
                 </td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.ProductId" class="text-light">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.ProductId" class="text-light">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.ProductId" class="text-light">Delete</a>
+                    <a asp-action="Edit" asp-route-id="@item.ProductId" class="text-dark">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.ProductId" class="text-dark">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.ProductId" class="text-dark">Delete</a>
                 </td>
             </tr>
         }
     </tbody>
 </table>
+            </div>
+        </div>
+    </div>
+
 
 @{
     var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";

@@ -3,8 +3,11 @@
 @{
     ViewData["Title"] = "Orders";
 }
+    <div class="container mt-5 p-4" style="background-color: rgba(255, 255, 255, 0.5); border-radius: 8px; color: black;">
+        <div class="row">
+            <div class="col-md-12 text-center">
 
-<h1>Index</h1>
+<h1>Your Order</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -20,9 +23,6 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.ShippedDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.StaffId)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Customer)
@@ -43,9 +43,6 @@
                 @Html.DisplayFor(modelItem => item.ShippedDate)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.StaffId)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.Customer.City)
             </td>
             <td>
@@ -57,3 +54,6 @@
 }
     </tbody>
 </table>
+</div>
+        </div>
+    </div>

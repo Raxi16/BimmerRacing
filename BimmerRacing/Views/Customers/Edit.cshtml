@@ -3,7 +3,9 @@
 @{
     ViewData["Title"] = "Edit";
 }
-
+<div class="container mt-5 p-4" style="background-color: rgba(255, 255, 255, 0.5); border-radius: 8px; color: black;">
+    <div class="row">
+        <div class="col-md-12 text-center">
 <h1>Edit</h1>
 
 <h4>Customer</h4>
@@ -63,7 +65,9 @@
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
-
+        </div>
+    </div>
+</div>
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

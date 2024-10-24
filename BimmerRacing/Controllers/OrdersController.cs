@@ -59,7 +59,7 @@ namespace BimmerRacing.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("OrderId,CustomerId,OrderStatus,RequiredDate,ShippedDate,StaffId")] Order order)
+        public async Task<IActionResult> Create([Bind("OrderId,CustomerId,OrderStatus,RequiredDate,ShippedDate")] Order order)
         {
             if (ModelState.IsValid)
             {
@@ -93,7 +93,7 @@ namespace BimmerRacing.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("OrderId,CustomerId,OrderStatus,RequiredDate,ShippedDate,StaffId")] Order order)
+        public async Task<IActionResult> Edit(int id, [Bind("OrderId,CustomerId,OrderStatus,RequiredDate,ShippedDate")] Order order)
         {
             if (id != order.OrderId)
             {
