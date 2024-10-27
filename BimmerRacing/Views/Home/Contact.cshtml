@@ -1,25 +1,73 @@
 ﻿@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
-
 <div style="margin-top: 80px;">
     @{
         ViewData["Title"] = "Contact Us";
     }
-    <!-- contact form here -->
-    <form>
-        <div class="mb-3 text-light">
-            <label for="fullName" class="form-label">Full Name</label>
-            <input type="text" class="form-control" id="fullName" placeholder="Enter your full name">
+    <!-- Contact form -->
+    <div class="container mt-5 p-4" style="background-color: rgba(255, 255, 255, 0.5); border-radius: 8px; color: black;">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="text-center mb-4">Contact Us</h2>
+                <form action="https://formspree.io/f/xzzbzwbk" method="POST">
+                    <div class="mb-3">
+                        <label for="fname" class="form-label">First Name</label>
+                        <input type="text" id="fname" name="firstname" class="form-control" placeholder="First Name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="lname" class="form-label">Last Name</label>
+                        <input type="text" id="lname" name="lastname" class="form-control" placeholder="Last Name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="city" class="form-label">City</label>
+                        <select id="city" name="city" class="form-select">
+                            <option value="auckland">Auckland</option>
+                            <option value="wellington">Wellington</option>
+                            <option value="christchurch">Christchurch</option>
+                            <option value="hamilton">Hamilton</option>
+                            <option value="dunedin">Dunedin</option>
+                            <option value="rotorua">Rotorua</option>
+                            <option value="tauranga">Tauranga</option>
+                            <option value="napier">Napier</option>
+                            <option value="nelson">Nelson</option>
+                            <option value="new-plymouth">New Plymouth</option>
+                            <option value="queenstown">Queenstown</option>
+                            <option value="palmerston-north">Palmerston North</option>
+                            <option value="invercargill">Invercargill</option>
+                            <option value="gisborne">Gisborne</option>
+                            <option value="whangarei">Whangarei</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="subject" class="form-label">Subject</label>
+                        <textarea id="subject" name="subject" class="form-control" placeholder="Subject" rows="2" required></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="queries" class="form-label">Queries</label>
+                        <textarea id="queries" name="queries" class="form-control" placeholder="Queries" rows="5" required></textarea>
+                    </div>
+                    <div class="text-center">
+                        <input type="submit" value="Send" class="btn btn-primary">
+                    </div>
+                </form>
+            </div>
         </div>
-        <div class="mb-3 text-light">
-            <label for="email" class="form-label">Email</label>
-            <input type="email" class="form-control" id="email" placeholder="Enter your email">
-        </div>
-        <div class="mb-3 text-light">
-            <label for="message" class="form-label">Message</label>
-            <textarea class="form-control" id="message" rows="5" placeholder="Enter your message"></textarea>
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+    </div>
 </div>
+
+<style>
+    /* Additional Styles */
+    .form-label {
+        font-weight: bold;
+    }
+
+    .form-control, .form-select {
+        border-radius: 4px;
+    }
+
+    .container {
+        max-width: 800px;
+    }
+</style>

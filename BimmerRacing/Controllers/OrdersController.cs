@@ -61,7 +61,7 @@ namespace BimmerRacing.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("OrderId,CustomerId,OrderStatus,RequiredDate,ShippedDate")] Order order)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 _context.Add(order);
                 await _context.SaveChangesAsync();
@@ -100,7 +100,7 @@ namespace BimmerRacing.Controllers
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 try
                 {

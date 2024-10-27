@@ -59,7 +59,7 @@ namespace BimmerRacing.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("PaymentId,CustomerId,PayAmount,PayMethod,PayDate")] Payment payment)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 _context.Add(payment);
                 await _context.SaveChangesAsync();
@@ -96,7 +96,7 @@ namespace BimmerRacing.Controllers
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 try
                 {
