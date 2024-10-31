@@ -1,47 +1,87 @@
 ﻿@*
+    View: Performance Parts Page
+    Purpose: Displays a collection of performance parts with images, descriptions, and an option to add items to the cart.
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
-<div style="margin-top: 80px;">
 @{
     ViewData["Title"] = "Performance";
 }
 
-<div class="container mt-5">
-    <h1>Performance Parts</h1>
-    <div class="row">
-        <div class="col-md-4">
-            <div class="card mb-4 shadow-sm">
-                <img src="~/images/bmw performance.jpg" class="card-img-top" alt="Product 1">
-                <div class="card-body">
-                    <h5 class="card-title">Performance Product 1</h5>
-                    <p class="card-text">Description of Performance Product 1. $19.99</p>
-                    <button class="btn btn-primary" onclick="addToCart('Performance Product 1', 19.99)">Add to Cart</button>
+<div style="margin-top: 80px;">
+    <div class="container mt-5">
+        <h1>Performance Parts</h1>
+        <div class="row">
+
+            @* Product 1: High Flow Inlet Intake *@
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <div style="height: 250px; overflow: hidden;">
+                        <img src="~/images/inlet intake.png" class="card-img-top" alt="High Flow Inlet Intake" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">High Flow Inlet Intake</h5>
+                        <p class="card-text">Increase your engine's airflow with this high-performance inlet intake. $199.99</p>
+                        <button class="btn btn-primary" onclick="addToCart('High Flow Inlet Intake', 199.99)">Add to Cart</button>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card mb-4 shadow-sm">
-                <img src="~/images/bmw performance.jpg" class="card-img-top" alt="Product 1">
-                <div class="card-body">
-                    <h5 class="card-title">Performance Product 1</h5>
-                    <p class="card-text">Description of Performance Product 1. $19.99</p>
-                    <button class="btn btn-primary" onclick="addToCart('Performance Product 1', 19.99)">Add to Cart</button>
+
+            @* Product 2: Upgraded Fuel Pump *@
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <div style="height: 250px; overflow: hidden;">
+                        <img src="~/images/fuel pump.png" class="card-img-top" alt="Upgraded Fuel Pump System" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Upgraded Fuel Pump</h5>
+                        <p class="card-text">Ensure optimal fuel delivery with this upgraded fuel pump system. $249.99</p>
+                        <button class="btn btn-primary" onclick="addToCart('Upgraded Fuel Pump', 249.99)">Add to Cart</button>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card mb-4 shadow-sm">
-                <img src="~/images/bmw performance.jpg" class="card-img-top" alt="Product 1">
-                <div class="card-body">
-                    <h5 class="card-title">Performance Product 1</h5>
-                    <p class="card-text">Description of Performance Product 1. $19.99</p>
-                    <button class="btn btn-primary" onclick="addToCart('Performance Product 1', 19.99)">Add to Cart</button>
+
+            @* Product 3: Upgraded Turbos *@
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <div style="height: 250px; overflow: hidden;">
+                        <img src="~/images/turbos.png" class="card-img-top" alt="Upgraded Turbos" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Upgraded Turbos</h5>
+                        <p class="card-text">Enhanced turbochargers for superior power and acceleration. $999.99</p>
+                        <button class="btn btn-primary" onclick="addToCart('Upgraded Turbos', 999.99)">Add to Cart</button>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-md-4">
-            <!-- Add more products here -->
+
+            @* Product 4: Catless Downpipes *@
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <div style="height: 250px; overflow: hidden;">
+                        <img src="~/images/downpipes.png" class="card-img-top" alt="Catless Downpipes" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Catless Downpipes</h5>
+                        <p class="card-text">Maximize exhaust flow and performance with these catless downpipes. $599.99</p>
+                        <button class="btn btn-primary" onclick="addToCart('Catless Downpipes', 599.99)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            @* Product 5: Intake Manifold *@
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <div style="height: 250px; overflow: hidden;">
+                        <img src="~/images/intake manifold.png" class="card-img-top" alt="Intake Manifold" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">High Performance Intake Manifold</h5>
+                        <p class="card-text">Optimize your engine's performance with this high-performance intake manifold. $399.99</p>
+                        <button class="btn btn-primary" onclick="addToCart('High Performance Intake Manifold', 399.99)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 </div>
-

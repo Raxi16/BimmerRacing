@@ -1,48 +1,73 @@
 ﻿@*
+    View: Exterior Enhancements Page
+    Purpose: Displays a selection of exterior enhancement parts with images, descriptions, and an option to add items to the cart.
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
-<div style="margin-top: 80px;">
 @{
     ViewData["Title"] = "Exterior";
 }
 
-<div class="container mt-5">
-    <h1>Exterior Enhancements</h1>
-    <div class="row">
-        <div class="col-md-4">
-            <div class="card mb-4 shadow-sm">
-                <img src="~/images/exterior1.jpg" class="card-img-top" alt="Product 1">
-                <div class="card-body">
-                    <h5 class="card-title">Exterior Enhancement 1</h5>
-                    <p class="card-text">Description of Exterior Enhancement 1. $39.99</p>
-                    <button class="btn btn-primary" onclick="addToCart('Exterior Enhancement 1', 39.99)">Add to Cart</button>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card mb-4 shadow-sm">
-                <img src="~/images/exterior1.jpg" class="card-img-top" alt="Product 1">
-                <div class="card-body">
-                    <h5 class="card-title">Exterior Enhancement 1</h5>
-                    <p class="card-text">Description of Exterior Enhancement 1. $39.99</p>
-                    <button class="btn btn-primary" onclick="addToCart('Exterior Enhancement 1', 39.99)">Add to Cart</button>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card mb-4 shadow-sm">
-                <img src="~/images/exterior1.jpg" class="card-img-top" alt="Product 1">
-                <div class="card-body">
-                    <h5 class="card-title">Exterior Enhancement 1</h5>
-                    <p class="card-text">Description of Exterior Enhancement 1. $39.99</p>
-                    <button class="btn btn-primary" onclick="addToCart('Exterior Enhancement 1', 39.99)">Add to Cart</button>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
+<div style="margin-top: 80px;">
+    <div class="container mt-5">
+        <h1>Exterior Enhancements</h1>
+        <div class="row">
 
-            <!-- Add more products here -->
+            @* Product 1: Front Grill *@
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <div style="height: 250px; width: 100%; overflow: hidden;">
+                        <img src="~/images/grill.png" class="card-img-top" alt="Front Grill" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Front Grill</h5>
+                        <p class="card-text">Sleek, high-quality front grill for a sportier look. $39.99</p>
+                        <button class="btn btn-primary" onclick="addToCart('Front Grill', 39.99)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            @* Product 2: Front Lip Spoiler *@
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <div style="height: 250px; width: 100%; overflow: hidden;">
+                        <img src="~/images/front%20lip.png" class="card-img-top" alt="Front Lip Spoiler" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Front Lip Spoiler</h5>
+                        <p class="card-text">Aggressive front lip spoiler to enhance downforce and style. $129.99</p>
+                        <button class="btn btn-primary" onclick="addToCart('Front Lip Spoiler', 129.99)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            @* Product 3: M Body Kit *@
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <div style="height: 250px; width: 100%; overflow: hidden;">
+                        <img src="~/images/m%20body%20kit.png" class="card-img-top" alt="M Body Kit" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">M Body Kit</h5>
+                        <p class="card-text">Complete M body kit for a full exterior transformation. $999.99</p>
+                        <button class="btn btn-primary" onclick="addToCart('M Body Kit', 999.99)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            @* Product 4: M3 Hood *@
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <div style="height: 250px; width: 100%; overflow: hidden;">
+                        <img src="~/images/m3%20hood.png" class="card-img-top" alt="M3 Hood" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">M3 Hood</h5>
+                        <p class="card-text">Lightweight M3 hood with enhanced cooling vents. $499.99</p>
+                        <button class="btn btn-primary" onclick="addToCart('M3 Hood', 499.99)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 </div>
-

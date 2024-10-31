@@ -2,46 +2,61 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 <div style="margin-top: 80px;">
-@{
-    ViewData["Title"] = "Interior";
-}
+    @{
+        ViewData["Title"] = "Interior";
+    }
 
-<div class="container mt-5">
-    <h1>Interior Accessories</h1>
-    <div class="row">
-        <div class="col-md-4">
-            <div class="card mb-4 shadow-sm">
-                <img src="~/images/interior1.jpg" class="card-img-top" alt="Product 1">
-                <div class="card-body">
-                    <h5 class="card-title">Interior Accessory 1</h5>
-                    <p class="card-text">Description of Interior Accessory 1. $29.99</p>
-                    <button class="btn btn-primary" onclick="addToCart('Interior Accessory 1', 29.99)">Add to Cart</button>
+    <div class="container mt-5">
+        <h1>Interior Accessories</h1>
+        <div class="row">
+
+            <!-- Product 1: Crystal Shift Knob -->
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <img src="~/images/crystal shift knob.png" class="card-img-top" alt="Crystal Shift Knob">
+                    <div class="card-body">
+                        <h5 class="card-title">Crystal Shift Knob</h5>
+                        <p class="card-text">Stylish crystal shift knob that adds elegance to your interior. $249.99</p>
+                        <button class="btn btn-primary" onclick="addToCart('Crystal Shift Knob', 249.99)">Add to Cart</button>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card mb-4 shadow-sm">
-                <img src="~/images/interior1.jpg" class="card-img-top" alt="Product 1">
-                <div class="card-body">
-                    <h5 class="card-title">Interior Accessory 1</h5>
-                    <p class="card-text">Description of Interior Accessory 1. $29.99</p>
-                    <button class="btn btn-primary" onclick="addToCart('Interior Accessory 1', 29.99)">Add to Cart</button>
+
+            <!-- Product 2: Carbon Steering Wheel -->
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <img src="~/images/carbon steering wheel.png" class="card-img-top" alt="Carbon Steering Wheel">
+                    <div class="card-body">
+                        <h5 class="card-title">Carbon Steering Wheel</h5>
+                        <p class="card-text">Lightweight carbon fiber steering wheel for improved grip and style. $1299.99</p>
+                        <button class="btn btn-primary" onclick="addToCart('Carbon Steering Wheel', 1299.99)">Add to Cart</button>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card mb-4 shadow-sm">
-                <img src="~/images/interior1.jpg" class="card-img-top" alt="Product 1">
-                <div class="card-body">
-                    <h5 class="card-title">Interior Accessory 1</h5>
-                    <p class="card-text">Description of Interior Accessory 1. $29.99</p>
-                    <button class="btn btn-primary" onclick="addToCart('Interior Accessory 1', 29.99)">Add to Cart</button>
+
+            <!-- Product 3: Carbon Interiors -->
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <img src="~/images/carbon interiors.png" class="card-img-top" alt="Carbon Interiors">
+                    <div class="card-body">
+                        <h5 class="card-title">Carbon Interiors</h5>
+                        <p class="card-text">Upgrade your interior with high-quality carbon fiber accents. $599.99</p>
+                        <button class="btn btn-primary" onclick="addToCart('Carbon Interiors', 599.99)">Add to Cart</button>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-md-4">
-            <!-- Add more products here -->
+
+            <!-- Product 4: Ambient Lights -->
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <img src="~/images/ambien lights.png" class="card-img-top" alt="Ambient Lights">
+                    <div class="card-body">
+                        <h5 class="card-title">Ambient Lights</h5>
+                        <p class="card-text">LED ambient lights to enhance your car's interior atmosphere. $169.99</p>
+                        <button class="btn btn-primary" onclick="addToCart('Ambient Lights', 169.99)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
-

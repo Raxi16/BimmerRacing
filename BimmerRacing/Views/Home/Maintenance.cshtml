@@ -1,47 +1,62 @@
 ﻿@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
-<div style="margin-top: 80px;">
-@{
-    ViewData["Title"] = "Maintenance";
-}
 
-<div class="container mt-5">
-    <h1>Maintenance Products</h1>
-    <div class="row">
-        <div class="col-md-4">
-            <div class="card mb-4 shadow-sm">
-                <img src="~/images/maintenance1.jpg" class="card-img-top" alt="Product 1">
-                <div class="card-body">
-                    <h5 class="card-title">Maintenance Product 1</h5>
-                    <p class="card-text">Description of Maintenance Product 1. $9.99</p>
-                    <button class="btn btn-primary" onclick="addToCart('Maintenance Product 1', 9.99)">Add to Cart</button>
+<div style="margin-top: 80px;">
+    @{
+        ViewData["Title"] = "Maintenance";
+    }
+
+    <div class="container mt-5">
+        <h1>Maintenance Products</h1>
+        <div class="row">
+            <!-- Product 1: Valve Cover -->
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <img src="~/images/valve cover.png" class="card-img-top" alt="Valve Cover">
+                    <div class="card-body">
+                        <h5 class="card-title">Valve Cover</h5>
+                        <p class="card-text">High-quality valve cover to ensure optimal engine performance. $79.99</p>
+                        <button class="btn btn-primary" onclick="addToCart('Valve Cover', 79.99)">Add to Cart</button>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card mb-4 shadow-sm">
-                <img src="~/images/maintenance1.jpg" class="card-img-top" alt="Product 1">
-                <div class="card-body">
-                    <h5 class="card-title">Maintenance Product 1</h5>
-                    <p class="card-text">Description of Maintenance Product 1. $9.99</p>
-                    <button class="btn btn-primary" onclick="addToCart('Maintenance Product 1', 9.99)">Add to Cart</button>
+
+            <!-- Product 2: Fuel Injectors -->
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <img src="~/images/injectors.png" class="card-img-top" alt="Fuel Injectors">
+                    <div class="card-body">
+                        <h5 class="card-title">Fuel Injectors</h5>
+                        <p class="card-text">Precision-engineered fuel injectors for improved fuel efficiency. $129.99</p>
+                        <button class="btn btn-primary" onclick="addToCart('Fuel Injectors', 129.99)">Add to Cart</button>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card mb-4 shadow-sm">
-                <img src="~/images/maintenance1.jpg" class="card-img-top" alt="Product 1">
-                <div class="card-body">
-                    <h5 class="card-title">Maintenance Product 1</h5>
-                    <p class="card-text">Description of Maintenance Product 1. $9.99</p>
-                    <button class="btn btn-primary" onclick="addToCart('Maintenance Product 1', 9.99)">Add to Cart</button>
+
+            <!-- Product 3: Intercooler -->
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <img src="~/images/intercooler.png" class="card-img-top" alt="Intercooler">
+                    <div class="card-body">
+                        <h5 class="card-title">Intercooler</h5>
+                        <p class="card-text">High-performance intercooler for better cooling efficiency and horsepower. $699.99</p>
+                        <button class="btn btn-primary" onclick="addToCart('Intercooler', 299.99)">Add to Cart</button>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-md-4">
-            <!-- Add more products here -->
+
+            <!-- Product 4: Forged Pistons -->
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <img src="~/images/forged pistons.png" class="card-img-top" alt="Forged Pistons">
+                    <div class="card-body">
+                        <h5 class="card-title">Forged Pistons</h5>
+                        <p class="card-text">Durable forged pistons designed for high performance and reliability. $1299.99</p>
+                        <button class="btn btn-primary" onclick="addToCart('Forged Pistons', 499.99)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
-
